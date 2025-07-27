@@ -1,0 +1,14 @@
+[package]
+name = "crispii_music"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85.0"
+description = "Music types intended for use in Crispii"
+readme = "README.md"
+repository = "https://github.com/stephen-paton/crispii_music"
+authors = ["Stephen Paton <69050696+stephen-paton@users.noreply.github.com>"]
+license = "MIT OR Apache-2.0"
+keywords = ["crispii", "music"]
+
+[dependencies]
+crispii_errors = "0.1.2"
