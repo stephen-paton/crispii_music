@@ -1,4 +1,5 @@
 use std::fmt::Display;
+use rand::distr::{Distribution, StandardUniform};
 
 use crispii_errors::{CrispiiError, ImpossibleOperationError};
 
@@ -20,6 +21,18 @@ impl Display for Modifier {
             Modifier::Default => write!(f, ""),
             Modifier::Sharp => write!(f, "♯"),
             Modifier::DoubleSharp => write!(f, "𝄪"),
+        }
+    }
+}
+
+impl Distribution<Modifier> for StandardUniform {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> Modifier {
+        match rng.random_range(0..=4) {
+            0 => Modifier::DoubleFlat,
+            1 => Modifier::Flat,
+            2 => Modifier::Default,
+            3 => Modifier::Sharp,
+            _ => Modifier::DoubleSharp,
         }
     }
 }

@@ -1,4 +1,5 @@
 use std::fmt::Display;
+use rand::distr::{Distribution, StandardUniform};
 
 use crate::notes::{Modifier, Octave};
 
@@ -29,6 +30,20 @@ impl Display for LetterNote {
             LetterNote::G(modifier, octave) => write!(f, "G{modifier}({octave})"),
             LetterNote::A(modifier, octave) => write!(f, "A{modifier}({octave})"),
             LetterNote::B(modifier, octave) => write!(f, "B{modifier}({octave})"),
+        }
+    }
+}
+
+impl Distribution<LetterNote> for StandardUniform {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> LetterNote {
+        match rng.random_range(0..=6) {
+            0 => LetterNote::C(rng.random(), rng.random()),
+            1 => LetterNote::D(rng.random(), rng.random()),
+            2 => LetterNote::E(rng.random(), rng.random()),
+            3 => LetterNote::F(rng.random(), rng.random()),
+            4 => LetterNote::G(rng.random(), rng.random()),
+            5 => LetterNote::A(rng.random(), rng.random()),
+            _ => LetterNote::B(rng.random(), rng.random()),
         }
     }
 }

@@ -1,4 +1,5 @@
 use std::fmt::Display;
+use rand::distr::{Distribution, StandardUniform};
 
 use crate::notes::{Modifier, Octave};
 
@@ -29,6 +30,20 @@ impl Display for NumberNote {
             NumberNote::Five(modifier, octave) => write!(f, "5{modifier}({octave})"),
             NumberNote::Six(modifier, octave) => write!(f, "6{modifier}({octave})"),
             NumberNote::Seven(modifier, octave) => write!(f, "7{modifier}({octave})"),
+        }
+    }
+}
+
+impl Distribution<NumberNote> for StandardUniform {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> NumberNote {
+        match rng.random_range(0..=6) {
+            0 => NumberNote::One(rng.random(), rng.random()),
+            1 => NumberNote::Two(rng.random(), rng.random()),
+            2 => NumberNote::Three(rng.random(), rng.random()),
+            3 => NumberNote::Four(rng.random(), rng.random()),
+            4 => NumberNote::Five(rng.random(), rng.random()),
+            5 => NumberNote::Six(rng.random(), rng.random()),
+            _ => NumberNote::Seven(rng.random(), rng.random()),
         }
     }
 }
