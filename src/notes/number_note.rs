@@ -25,13 +25,13 @@ impl Default for NumberNote {
 impl Display for NumberNote {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            NumberNote::One(modifier, octave) => write!(f, "1{modifier}({octave})"),
-            NumberNote::Two(modifier, octave) => write!(f, "2{modifier}({octave})"),
-            NumberNote::Three(modifier, octave) => write!(f, "3{modifier}({octave})"),
-            NumberNote::Four(modifier, octave) => write!(f, "4{modifier}({octave})"),
-            NumberNote::Five(modifier, octave) => write!(f, "5{modifier}({octave})"),
-            NumberNote::Six(modifier, octave) => write!(f, "6{modifier}({octave})"),
-            NumberNote::Seven(modifier, octave) => write!(f, "7{modifier}({octave})"),
+            NumberNote::One(modifier, _) => write!(f, "1 {modifier}"),
+            NumberNote::Two(modifier, _) => write!(f, "2 {modifier}"),
+            NumberNote::Three(modifier, _) => write!(f, "3 {modifier}"),
+            NumberNote::Four(modifier, _) => write!(f, "4 {modifier}"),
+            NumberNote::Five(modifier, _) => write!(f, "5 {modifier}"),
+            NumberNote::Six(modifier, _) => write!(f, "6 {modifier}"),
+            NumberNote::Seven(modifier, _) => write!(f, "7 {modifier}"),
         }
     }
 }

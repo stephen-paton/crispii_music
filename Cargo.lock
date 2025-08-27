@@ -22,7 +22,7 @@ checksum = "5699dfae4a15d67ad825e26e926e8e2e08513e5848876d88a27187aa588ea8d6"
 
 [[package]]
 name = "crispii_music"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "crispii_errors",
  "rand",

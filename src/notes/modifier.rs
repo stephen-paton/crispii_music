@@ -16,11 +16,11 @@ pub enum Modifier {
 impl Display for Modifier {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Modifier::DoubleFlat => write!(f, "𝄫"),
-            Modifier::Flat => write!(f, "♭"),
+            Modifier::DoubleFlat => write!(f, "Double Flat"),
+            Modifier::Flat => write!(f, "Flat"),
             Modifier::Default => write!(f, ""),
-            Modifier::Sharp => write!(f, "♯"),
-            Modifier::DoubleSharp => write!(f, "𝄪"),
+            Modifier::Sharp => write!(f, "Sharp"),
+            Modifier::DoubleSharp => write!(f, "Double Sharp"),
         }
     }
 }

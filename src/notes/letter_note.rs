@@ -25,13 +25,13 @@ impl Default for LetterNote {
 impl Display for LetterNote {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            LetterNote::C(modifier, octave) => write!(f, "C{modifier}({octave})"),
-            LetterNote::D(modifier, octave) => write!(f, "D{modifier}({octave})"),
-            LetterNote::E(modifier, octave) => write!(f, "E{modifier}({octave})"),
-            LetterNote::F(modifier, octave) => write!(f, "F{modifier}({octave})"),
-            LetterNote::G(modifier, octave) => write!(f, "G{modifier}({octave})"),
-            LetterNote::A(modifier, octave) => write!(f, "A{modifier}({octave})"),
-            LetterNote::B(modifier, octave) => write!(f, "B{modifier}({octave})"),
+            LetterNote::C(modifier, _) => write!(f, "C {modifier}"),
+            LetterNote::D(modifier, _) => write!(f, "D {modifier}"),
+            LetterNote::E(modifier, _) => write!(f, "E {modifier}"),
+            LetterNote::F(modifier, _) => write!(f, "F {modifier}"),
+            LetterNote::G(modifier, _) => write!(f, "G {modifier}"),
+            LetterNote::A(modifier, _) => write!(f, "A {modifier}"),
+            LetterNote::B(modifier, _) => write!(f, "B {modifier}"),
         }
     }
 }
