@@ -1,6 +1,8 @@
 use std::fmt::Display;
 use rand::distr::{Distribution, StandardUniform};
 
+use crispii_errors::CrispiiError;
+
 use crate::notes::{Modifier, Octave};
 
 #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
@@ -44,6 +46,60 @@ impl Distribution<NumberNote> for StandardUniform {
             4 => NumberNote::Five(rng.random(), rng.random()),
             5 => NumberNote::Six(rng.random(), rng.random()),
             _ => NumberNote::Seven(rng.random(), rng.random()),
+        }
+    }
+}
+
+impl NumberNote {
+    pub fn get_modifier(&self) -> Modifier {
+        match self {
+            NumberNote::One(modifier, _) => *modifier,
+            NumberNote::Two(modifier, _) => *modifier,
+            NumberNote::Three(modifier, _) => *modifier,
+            NumberNote::Four(modifier, _) => *modifier,
+            NumberNote::Five(modifier, _) => *modifier,
+            NumberNote::Six(modifier, _) => *modifier,
+            NumberNote::Seven(modifier, _) => *modifier,
+        }
+    }
+
+    pub fn get_octave(&self) -> Octave {
+        match self {
+            NumberNote::One(_, octave) => *octave,
+            NumberNote::Two(_, octave) => *octave,
+            NumberNote::Three(_, octave) => *octave,
+            NumberNote::Four(_, octave) => *octave,
+            NumberNote::Five(_, octave) => *octave,
+            NumberNote::Six(_, octave) => *octave,
+            NumberNote::Seven(_, octave) => *octave,
+        }
+    }
+
+    pub fn try_sharpen(self) -> Result<Self, Box<dyn CrispiiError>> {
+        let modifier = self.get_modifier().try_sharpen()?;
+
+        match self {
+            NumberNote::One(_, octave) => Ok(NumberNote::One(modifier, octave)),
+            NumberNote::Two(_, octave) => Ok(NumberNote::Two(modifier, octave)),
+            NumberNote::Three(_, octave) => Ok(NumberNote::Three(modifier, octave)),
+            NumberNote::Four(_, octave) => Ok(NumberNote::Four(modifier, octave)),
+            NumberNote::Five(_, octave) => Ok(NumberNote::Five(modifier, octave)),
+            NumberNote::Six(_, octave) => Ok(NumberNote::Six(modifier, octave)),
+            NumberNote::Seven(_, octave) => Ok(NumberNote::Seven(modifier, octave)),
+        }
+    }
+
+    pub fn try_flatten(self) -> Result<Self, Box<dyn CrispiiError>> {
+        let modifier = self.get_modifier().try_flatten()?;
+
+        match self {
+            NumberNote::One(_, octave) => Ok(NumberNote::One(modifier, octave)),
+            NumberNote::Two(_, octave) => Ok(NumberNote::Two(modifier, octave)),
+            NumberNote::Three(_, octave) => Ok(NumberNote::Three(modifier, octave)),
+            NumberNote::Four(_, octave) => Ok(NumberNote::Four(modifier, octave)),
+            NumberNote::Five(_, octave) => Ok(NumberNote::Five(modifier, octave)),
+            NumberNote::Six(_, octave) => Ok(NumberNote::Six(modifier, octave)),
+            NumberNote::Seven(_, octave) => Ok(NumberNote::Seven(modifier, octave)),
         }
     }
 }

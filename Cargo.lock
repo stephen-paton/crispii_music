@@ -16,13 +16,13 @@ checksum = "2fd1289c04a9ea8cb22300a459a72a385d7c73d3259e2ed7dcb2af674838cfa9"
 
 [[package]]
 name = "crispii_errors"
-version = "0.1.2"
+version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bda549b9d8f334dfcc45317733405c7498286ffa3725ab91dac6ec28214f2ec1"
+checksum = "5699dfae4a15d67ad825e26e926e8e2e08513e5848876d88a27187aa588ea8d6"
 
 [[package]]
 name = "crispii_music"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "crispii_errors",
  "rand",
